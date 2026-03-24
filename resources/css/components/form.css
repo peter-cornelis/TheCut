@@ -1,0 +1,20 @@
+form {
+    @apply max-w-md mx-auto py-8 px-6 bg-card rounded-md shadow shadow-black/80 border border-border;
+
+    button[type="submit"] {
+        @apply mt-4;
+    }
+}
+
+.form-field {
+    @apply grid gap-2;
+}
+.input {
+    @apply rounded-md border border-black bg-input px-3 py-2 text-sm shadow-sm transition-all duration-300;
+}
+
+.label {
+    span {
+        @apply text-sm text-pink-600;
+    }
+}

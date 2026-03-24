@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Movie;
 use Illuminate\Support\Facades\Http;
 
 class TmdbService
@@ -20,12 +21,14 @@ class TmdbService
             ->acceptJson();
     }
 
-    public function getMovie(int $id): array
+    public function getMovie(int $id): Movie
     {
-        return $this->client()
+        $data = $this->client()
             ->get("/movie/{$id}")
             ->throw()
             ->json();
+
+        return Movie::fromTmdb($data);
     }
 
     public function searchMovies(string $query): array

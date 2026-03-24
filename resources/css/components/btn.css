@@ -1,0 +1,16 @@
+.btn,
+.btn-inline {
+    @apply rounded-md px-4 py-2 text-sm font-medium shadow transition-discrete duration-300;
+}
+
+.btn {
+    @apply bg-primary hover:bg-primary/90 border border-white/15;
+}
+
+.btn-inline {
+    @apply ring hover:ring-2 ring-primary;
+}
+
+.btn-circle {
+    @apply rounded-full aspect-square h-full p-2 flex items-center text-sm ring-2 ring-border hover:ring-primary transition-discrete duration-300;
+}

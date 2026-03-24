@@ -1,0 +1,19 @@
+@props(['title'])
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ $title }}</title>
+    @vite(['resources/css/app.css'])
+</head>
+<body class="bg-background text-foreground">
+    <header class="bg-card border-b border-border shadow">
+        <x-layout.nav />
+    </header>
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        {{ $slot }}
+    </main>
+</body>
+</html>
