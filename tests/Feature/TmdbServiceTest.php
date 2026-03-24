@@ -13,7 +13,7 @@ test('returns movie by Id', function () {
 test('throws exception if movie isn\'t found', function () {
     $tmdb = app(TmdbService::class);
     $tmdb->getMovie(0);
-})->throws(\Exception::class);
+})->throws(Exception::class);
 
 test('receives poster for movie', function () {
     $tmdb = app(TmdbService::class);
