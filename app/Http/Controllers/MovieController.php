@@ -16,7 +16,7 @@ class MovieController extends Controller
      */
     public function index(TmdbService $tmdb)
     {
-        return view('home', ['movie' => $tmdb->getMovie(522627)]);
+        return view('home', ['movies' => $tmdb->getUpcomingMovies()]);
     }
 
     /**

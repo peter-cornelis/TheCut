@@ -38,4 +38,14 @@ class TmdbService
             ->throw()
             ->json();
     }
+
+    public function getUpcomingMovies(): array
+    {
+        $data = $this->client()
+            ->get('/movie/upcoming', ['language' => app()->getLocale()])
+            ->throw()
+            ->json();
+
+        return array_map(Movie::fromTmdb(...), $data['results']);
+    }
 }

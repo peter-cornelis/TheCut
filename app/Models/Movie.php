@@ -24,7 +24,7 @@ class Movie extends Model
     {
         return new self([
             'tmdb_id' => $data['id'],
-            'title' => $data['title'],
+            'title' => $data['original_title'],
             'release_date' => $data['release_date'],
             'poster_path' => $data['poster_path'],
             'backdrop_path' => $data['backdrop_path'],
