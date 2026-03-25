@@ -6,5 +6,5 @@
         <p class="text-sm text-foreground/50 bg-background rounded-b-md py-2 border-t border-border">{{ $movie->release_year }}</p>
         <x-rating :movie="$movie" class="-top-8 right-1/2 translate-x-1/2" />
     </div>
-    <a href="/movies/{{ $movie->tmdb_id }}" class="absolute w-full h-full top-0 left-0"></a>
+    <a href="/movies/{{ $movie->id }}" class="absolute w-full h-full top-0 left-0"></a>
 </div>

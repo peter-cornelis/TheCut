@@ -21,20 +21,24 @@ class TmdbService
             ->acceptJson();
     }
 
-    public function getMovie(int $id): Movie
+    public function getMovie(int $id): array
     {
-        $data = $this->client()
-            ->get("/movie/{$id}", ['append_to_response' => 'videos', 'language' => app()->getLocale()])
+        return $this->client()
+            ->get("/movie/{$id}", [
+                'append_to_response' => 'videos,credits',
+                'language' => app()->getLocale()
+            ])
             ->throw()
             ->json();
-
-        return Movie::fromTmdb($data);
     }
 
     public function searchMovies(string $query): array
     {
         return $this->client()
-            ->get('/search/movie', ['query' => $query, 'language' => app()->getLocale()])
+            ->get('/search/movie', [
+                'query' => $query,
+                'language' => app()->getLocale()
+            ])
             ->throw()
             ->json();
     }

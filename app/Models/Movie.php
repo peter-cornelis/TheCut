@@ -10,10 +10,11 @@ use Illuminate\Support\Number;
 class Movie extends Model
 {
     protected $fillable = [
-        'tmdb_id',
+        'id',
         'title',
         'overview',
         'release_date',
+        'status',
         'poster_path',
         'backdrop_path',
         'original_language',
@@ -24,9 +25,10 @@ class Movie extends Model
     public static function fromTmdb(array $data): self
     {
         return new self([
-            'tmdb_id' => $data['id'],
+            'id' => $data['id'],
             'title' => $data['original_title'],
             'release_date' => $data['release_date'],
+            'status' => $data['status'] ?? null,
             'poster_path' => $data['poster_path'],
             'backdrop_path' => $data['backdrop_path'],
             'overview' => $data['overview'],

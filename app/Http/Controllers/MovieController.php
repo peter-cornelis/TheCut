@@ -38,9 +38,17 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $tmdb_id, TmdbService $tmdb)
+    public function show(int $id, TmdbService $tmdb)
     {
-        $movie = $tmdb->getMovie($tmdb_id);
+        $movie = Movie::find($id);
+        if (!$movie || now()->diffInDays($movie->updated_at) > 7) {
+            $data = $tmdb->getMovie($id);
+            $movie = Movie::updateOrCreate(
+                ['id' => $data['id']],
+                Movie::fromTmdb($data)->getAttributes()
+            );
+        }
+
         return view('movie', ['movie' => $movie]);
     }
 
