@@ -1,17 +1,17 @@
 <nav class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
     <ul class="flex items-center gap-4">
         <li>
-            <a href="/" class="text-3xl font-bold flex items-center">🎬 The Cut</a>
+            <a href="/" class="text-3xl font-bold flex items-center" aria-label="{{ __('nav.home') }}">🎬 The Cut</a>
         </li>
     </ul>
     <ul class="relative flex items-center gap-4">
     @auth
         <li>
-            <a href="/logout" class="btn-inline">Logout</a>
+            <a href="/logout" class="btn-inline">{{ __('nav.logout') }}</a>
         </li>
     @else
         <li>
-            <a href="/login" class="btn">Login</a>
+            <a href="/login" class="btn">{{ __('nav.login') }}</a>
         </li>
     @endauth
         <li class="relative w-12 h-6 flex gap-1 items-center cursor-pointer">
@@ -26,11 +26,11 @@
                 </li>
                 <li class="hidden dropdown-item">
                     @if (app()->getLocale() !== 'en')
-                        <a href="/language/en">
+                        <a href="/language/en" aria-label="{{ __('nav.switch_language') }} {{ __('nav.english') }}">
                             <x-svg.en class="w-4 bg-card rounded-xs shadow ring ring-border"/>
                         </a>
                     @else
-                        <a href="/language/nl">
+                        <a href="/language/nl" aria-label="{{ __('nav.switch_language') }} {{ __('nav.dutch') }}">
                             <x-svg.nl class="w-4 bg-card rounded-xs shadow ring ring-border"/>
                         </a>
                     @endif
