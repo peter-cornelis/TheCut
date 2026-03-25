@@ -22,13 +22,17 @@
                     @else
                         <x-svg.nl class="w-4 bg-card rounded-xs shadow ring ring-border"/>
                     @endif
-                    <x-svg.down class="w-4 h-4 transition-colors duration-300"/>
+                    <x-svg.down class="w-4 h-4 transition-colors duration-500"/>
                 </li>
                 <li class="hidden dropdown-item">
                     @if (app()->getLocale() !== 'en')
-                        <x-svg.en class="w-4 bg-card rounded-xs shadow ring ring-border"/>
+                        <a href="/language/en">
+                            <x-svg.en class="w-4 bg-card rounded-xs shadow ring ring-border"/>
+                        </a>
                     @else
-                        <x-svg.nl class="w-4 bg-card rounded-xs shadow ring ring-border"/>
+                        <a href="/language/nl">
+                            <x-svg.nl class="w-4 bg-card rounded-xs shadow ring ring-border"/>
+                        </a>
                     @endif
                 </li>
             </ul>
