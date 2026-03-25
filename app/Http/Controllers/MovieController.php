@@ -38,9 +38,10 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movie $movie): void
+    public function show(int $tmdb_id, TmdbService $tmdb)
     {
-        //
+        $movie = $tmdb->getMovie($tmdb_id);
+        return view('movie', ['movie' => $movie]);
     }
 
     /**

@@ -18,6 +18,7 @@ class Movie extends Model
         'backdrop_path',
         'original_language',
         'vote_average',
+        'trailer',
     ];
 
     public static function fromTmdb(array $data): self
@@ -31,17 +32,28 @@ class Movie extends Model
             'overview' => $data['overview'],
             'original_language' => $data['original_language'],
             'vote_average' => $data['vote_average'],
+            'trailer' => self::selectTrailerUrl($data['videos']['results'] ?? []),
         ]);
+    }
+
+    protected static function selectTrailerUrl(array $videos): ?string
+    {
+        foreach ($videos as $video) {
+            if ($video['type'] === 'Trailer' && $video['site'] === 'YouTube') {
+                return "https://www.youtube.com/watch?v={$video['key']}";
+            }
+        }
+        return null;
     }
 
     public function getPosterUrlAttribute(): string
     {
-        return config('tmdb.poster_base_url').$this->poster_path;
+        return config('tmdb.poster_base_url') . $this->poster_path;
     }
 
     public function getBackdropUrlAttribute(): string
     {
-        return config('tmdb.backdrop_base_url').$this->backdrop_path;
+        return config('tmdb.backdrop_base_url') . $this->backdrop_path;
     }
 
     public function getReleaseYearAttribute(): string

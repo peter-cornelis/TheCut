@@ -24,7 +24,7 @@ class TmdbService
     public function getMovie(int $id): Movie
     {
         $data = $this->client()
-            ->get("/movie/{$id}", ['language' => app()->getLocale()])
+            ->get("/movie/{$id}", ['append_to_response' => 'videos', 'language' => app()->getLocale()])
             ->throw()
             ->json();
 

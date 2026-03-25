@@ -6,4 +6,5 @@
 
 return [
     'upcomingTitle' => 'Verwachte Films',
+    'releaseDate' => 'Release datum: ',
 ];
