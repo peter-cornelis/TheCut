@@ -1,0 +1,10 @@
+.dropdown-item {
+    @apply items-center gap-1 pl-2 pr-1 py-2 hover:bg-card rounded-b transition-colors duration-300;
+}
+
+.dropdown {
+    @apply absolute top-0 right-0 cursor-pointer text-foreground/50 hover:text-foreground border border-transparent rounded transition-colors duration-300;
+}
+.active-dropdown {
+    @apply bg-background border-border;
+}
