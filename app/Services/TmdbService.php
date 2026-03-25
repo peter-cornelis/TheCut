@@ -24,7 +24,7 @@ class TmdbService
     public function getMovie(int $id): Movie
     {
         $data = $this->client()
-            ->get("/movie/{$id}")
+            ->get("/movie/{$id}", ['language' => app()->getLocale()])
             ->throw()
             ->json();
 
@@ -34,7 +34,7 @@ class TmdbService
     public function searchMovies(string $query): array
     {
         return $this->client()
-            ->get('/search/movie', ['query' => $query])
+            ->get('/search/movie', ['query' => $query, 'language' => app()->getLocale()])
             ->throw()
             ->json();
     }
