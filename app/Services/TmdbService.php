@@ -26,7 +26,7 @@ class TmdbService
         return $this->client()
             ->get("/movie/{$id}", [
                 'append_to_response' => 'videos,credits',
-                'language' => app()->getLocale()
+                'language' => app()->getLocale(),
             ])
             ->throw()
             ->json();
@@ -37,7 +37,7 @@ class TmdbService
         return $this->client()
             ->get('/search/movie', [
                 'query' => $query,
-                'language' => app()->getLocale()
+                'language' => app()->getLocale(),
             ])
             ->throw()
             ->json();

@@ -41,7 +41,7 @@ class MovieController extends Controller
     public function show(int $id, TmdbService $tmdb)
     {
         $movie = Movie::find($id);
-        if (!$movie || now()->diffInDays($movie->updated_at) > 7) {
+        if (! $movie || now()->diffInDays($movie->updated_at) > 7 || $movie->title === null) {
             $data = $tmdb->getMovie($id);
             $movie = Movie::updateOrCreate(
                 ['id' => $data['id']],

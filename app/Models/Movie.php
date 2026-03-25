@@ -11,8 +11,10 @@ class Movie extends Model
 {
     protected $fillable = [
         'id',
-        'title',
-        'overview',
+        'title_nl',
+        'title_en',
+        'overview_nl',
+        'overview_en',
         'release_date',
         'status',
         'poster_path',
@@ -24,14 +26,16 @@ class Movie extends Model
 
     public static function fromTmdb(array $data): self
     {
+        $locale = app()->getLocale();
+
         return new self([
             'id' => $data['id'],
-            'title' => $data['original_title'],
+            "title_{$locale}" => $data['title'],
+            "overview_{$locale}" => $data['overview'],
             'release_date' => $data['release_date'],
             'status' => $data['status'] ?? null,
             'poster_path' => $data['poster_path'],
             'backdrop_path' => $data['backdrop_path'],
-            'overview' => $data['overview'],
             'original_language' => $data['original_language'],
             'vote_average' => $data['vote_average'],
             'trailer' => self::selectTrailerUrl($data['videos']['results'] ?? []),
@@ -45,6 +49,7 @@ class Movie extends Model
                 return "https://www.youtube.com/watch?v={$video['key']}";
             }
         }
+
         return null;
     }
 
@@ -66,5 +71,17 @@ class Movie extends Model
     public function getRatingAttribute(): string
     {
         return Number::percentage($this->vote_average * 10);
+    }
+
+    public function getTitleAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        return $this->{"title_{$locale}"};
+    }
+
+    public function getOverviewAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        return $this->{"overview_{$locale}"};
     }
 }

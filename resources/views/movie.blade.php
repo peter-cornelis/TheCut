@@ -1,5 +1,5 @@
 <x-layout title="{{ $movie->title }}">
-    <section class="max-w-4xl mx-auto px-6 py-8">
+    <section class="max-w-5xl mx-auto px-6 py-8">
         <header class="relative bg-cover bg-center rounded-md mb-6 h-64 shadow-lg shadow-black/50"
             style="background-image: url('{{ $movie->backdrop_url }}');">
             <div class="absolute inset-0 bg-black/70 rounded-md" />
