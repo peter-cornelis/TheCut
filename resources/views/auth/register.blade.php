@@ -1,5 +1,5 @@
 <x-layout title="{{ __('auth.register') }}">
-    <div class="flex min-h-[calc(100dvh-16rem)] items-center">
+    <div class="flex min-h-[calc(100dvh-16rem)] items-center justify-center">
         <form action="/register" method="post">
             <h1>{{ __('auth.register') }}</h1>
             @csrf

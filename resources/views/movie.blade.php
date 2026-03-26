@@ -5,17 +5,15 @@
             <div class="grid grid-cols-[auto_1fr] w-full h-full bg-black/70 rounded-md">
                 <div class="relative">
                     <img class="h-64 object-cover rounded-l-md shadow-lg shadow-black/50" src="{{ $movie->poster_url }}" alt="{{ $movie->title }} poster">
-                    {{-- remove comment when movie list functionality is implemented
-                    @if(auth()->movieList->contains($movie->id))
-                        <button class="btn-circle h-9 bg-emerald-400 absolute bottom-2 left-1/2 -translate-x-1/2">
-                            <x-svg.add class="w-6 h-6" />
-                        </button>
-                    @else
+                    @if(auth()->user()->movies->contains($movie->id))
                         <button class="btn-circle h-9 bg-rose-400 absolute bottom-2 left-1/2 -translate-x-1/2">
                             <x-svg.remove class="w-6 h-6" />
                         </button>
+                    @else
+                        <button class="btn-circle h-9 bg-emerald-400 absolute bottom-2 left-1/2 -translate-x-1/2">
+                            <x-svg.add class="w-6 h-6" />
+                        </button>
                     @endif
-                    --}}
                 </div>
                 <div class="grid grid-rows-[auto_1fr_auto] py-4 px-6 h-full">
                     <h1 class="text-left font-bold mb-4">{{ $movie->title }}</h1>

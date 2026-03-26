@@ -24,6 +24,11 @@ class Movie extends Model
         'trailer',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'movielists');
+    }
+
     public static function fromTmdb(array $data): self
     {
         $locale = app()->getLocale();

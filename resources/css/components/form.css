@@ -1,5 +1,5 @@
 form {
-    @apply max-w-md mx-auto w-full py-8 px-6 bg-card rounded-md shadow shadow-black/80 border border-border;
+    @apply w-full max-w-md py-8 px-6 bg-card rounded-md shadow shadow-black/80 border border-border;
 
     button[type="submit"] {
         @apply mt-4;

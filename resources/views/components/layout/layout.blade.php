@@ -12,7 +12,7 @@
         <header class="sticky top-0 z-100 bg-card border-b border-border shadow-md shadow-black/50">
             <x-layout.nav />
         </header>
-        <main class="max-w-7xl mx-auto px-6 py-10">
+        <main class="w-full max-w-7xl mx-auto px-6 py-10">
             {{ $slot }}
         </main>
         <footer class="px-4 py-2 text-center text-sm text-muted-foreground font-medium">
