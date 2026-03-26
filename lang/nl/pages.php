@@ -9,4 +9,5 @@ return [
     'released' => 'Uitgebracht: ',
     'expected' => 'Verwacht: ',
     'trailer' => 'Bekijk trailer',
+    'meta_provided' => 'Metadata verkregen van ',
 ];
