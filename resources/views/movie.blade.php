@@ -11,7 +11,7 @@
                         @if($movie->trailer)
                             <button class="btn-inline ring-rose-500 w-fit my-auto"
                                 onclick="document.getElementById('trailer-container').classList.remove('hidden'); document.getElementById('trailer').src = '{{ $movie->trailer }}'">
-                                Trailer
+                                {{ __('pages.trailer') }}
                             </button>
                             <x-trailer id="trailer-container" :title="$movie->title" aspect-ratio="4:3" class="hidden"/>
                         @endif

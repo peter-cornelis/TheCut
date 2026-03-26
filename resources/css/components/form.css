@@ -1,5 +1,5 @@
 form {
-    @apply max-w-md mx-auto py-8 px-6 bg-card rounded-md shadow shadow-black/80 border border-border;
+    @apply max-w-sm mx-auto w-full py-8 px-6 bg-card rounded-md shadow shadow-black/80 border border-border;
 
     button[type="submit"] {
         @apply mt-4;
@@ -7,7 +7,7 @@ form {
 }
 
 .form-field {
-    @apply grid gap-2;
+    @apply grid gap-2 pb-2;
 }
 .input {
     @apply rounded-md border border-black bg-input px-3 py-2 text-sm shadow-sm transition-all duration-300;
