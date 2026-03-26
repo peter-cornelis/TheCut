@@ -9,10 +9,11 @@
                     <p class="text-sm">{{$movie->status === 'Released' ? __('pages.released') : __('pages.expected') }} {{ $movie->release_date }}</p>
                     <div class="flex justify-between">
                         @if($movie->trailer)
-                            <button class="btn-inline ring-rose-500 w-fit my-auto" onclick="document.getElementById('trailer-container').classList.remove('hidden')">
+                            <button class="btn-inline ring-rose-500 w-fit my-auto"
+                                onclick="document.getElementById('trailer-container').classList.remove('hidden'); document.getElementById('trailer').src = '{{ $movie->trailer }}'">
                                 Trailer
                             </button>
-                            <x-trailer id="trailer-container" :url="$movie->trailer" aspect-ratio="4:3" class="hidden"/>
+                            <x-trailer id="trailer-container" :title="$movie->title" aspect-ratio="4:3" class="hidden"/>
                         @endif
                         <x-rating :movie="$movie" class="static" />
                     </div>
