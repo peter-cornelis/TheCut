@@ -5,7 +5,7 @@
 */
 
 return [
-    'login' => 'Inloggen',
+    'login' => 'Aanmelden',
     'register' => 'Registreren',
     'name' => 'Naam',
     'email' => 'E-mail',

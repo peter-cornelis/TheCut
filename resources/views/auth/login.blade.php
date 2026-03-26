@@ -1,11 +1,11 @@
-<x-layout title="Login">
+<x-layout title="{{ __('auth.login') }}">
     <div class="flex min-h-[calc(100dvh-16rem)] items-center">
         <form action="" method="post">
-            <h1>Login</h1>
+            <h1>{{ __('auth.login') }}</h1>
             @csrf
-            <x-form.field id="email" label="Email" type="email" />
-            <x-form.field id="password" label="Password" type="password" />
-            <button type="submit" class="btn w-full">Login</button>
+            <x-form.field id="email" label="{{ __('auth.email') }}" type="email" />
+            <x-form.field id="password" label="{{ __('auth.password') }}" type="password" />
+            <button type="submit" class="btn w-full">{{ __('auth.login') }}</button>
         </form>
     </div>
 </x-layout>

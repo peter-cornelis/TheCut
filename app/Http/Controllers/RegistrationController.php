@@ -21,6 +21,7 @@ class RegistrationController extends Controller
         $user = User::create($attributes);
 
         Auth::login($user);
+        $request->session()->regenerate();
 
         return redirect('/');
     }

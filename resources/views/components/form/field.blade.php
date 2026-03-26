@@ -10,5 +10,5 @@
             @enderror
         </span>
     </label>
-    <input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}" class="input" autocomplete="{{ $autocomplete }}">
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}" class="input" @if($autocomplete) autocomplete="{{ $autocomplete }}" @endif>
 </div>
