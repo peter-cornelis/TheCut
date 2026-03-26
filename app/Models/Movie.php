@@ -46,7 +46,7 @@ class Movie extends Model
     {
         foreach ($videos as $video) {
             if ($video['type'] === 'Trailer' && $video['site'] === 'YouTube') {
-                return "https://www.youtube.com/watch?v={$video['key']}";
+                return "https://www.youtube-nocookie.com/embed/{$video['key']}";
             }
         }
 
@@ -55,12 +55,12 @@ class Movie extends Model
 
     public function getPosterUrlAttribute(): string
     {
-        return config('tmdb.poster_base_url') . $this->poster_path;
+        return config('tmdb.poster_base_url').$this->poster_path;
     }
 
     public function getBackdropUrlAttribute(): string
     {
-        return config('tmdb.backdrop_base_url') . $this->backdrop_path;
+        return config('tmdb.backdrop_base_url').$this->backdrop_path;
     }
 
     public function getReleaseYearAttribute(): string
@@ -76,12 +76,14 @@ class Movie extends Model
     public function getTitleAttribute(): ?string
     {
         $locale = app()->getLocale();
+
         return $this->{"title_{$locale}"};
     }
 
     public function getOverviewAttribute(): ?string
     {
         $locale = app()->getLocale();
+
         return $this->{"overview_{$locale}"};
     }
 }

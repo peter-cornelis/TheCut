@@ -27,6 +27,7 @@ class TmdbService
             ->get("/movie/{$id}", [
                 'append_to_response' => 'videos,credits',
                 'language' => app()->getLocale(),
+                'include_video_language' => 'en,null',
             ])
             ->throw()
             ->json();

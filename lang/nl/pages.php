@@ -5,6 +5,7 @@
 */
 
 return [
-    'upcomingTitle' => 'Verwachte Films',
-    'releaseDate' => 'Release datum: ',
+    'upcomingTitle' => 'Opkomende Films',
+    'released' => 'Uitgebracht: ',
+    'expected' => 'Verwacht: ',
 ];

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import './fonts.css' layer(base);
+@import './components/headers.css' layer(components);
 @import './components/btn.css' layer(components);
 @import './components/form.css' layer(components);
 @import './components/language-dropdown.css' layer(components);
@@ -24,8 +25,4 @@
     --color-border: oklch(0.28 0 0);
     --color-input: oklch(0.28 0 0);
     --color-muted-foreground: oklch(0.6 0 0);
-}
-
-h1 {
-    @apply text-4xl font-bold mb-6 text-center;
 }

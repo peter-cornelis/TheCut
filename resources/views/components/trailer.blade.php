@@ -1,0 +1,7 @@
+@props(['url'])
+    <div
+        {{ $attributes->merge(['class' => 'absolute flex items-center justify-center top-0 left-0 w-full h-full bg-black/90']) }}
+        onclick="this.classList.add('hidden')"
+    >
+    <iframe id="trailer" class="max-w-xl w-full h-fit aspect-video shadow-lg shadow-black/50 rounded-lg" src="{{ $url }}" frameborder="0" allowfullscreen></iframe>
+</div>

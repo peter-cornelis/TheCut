@@ -1,6 +1,6 @@
 .btn,
 .btn-inline {
-    @apply rounded-md px-4 py-2 text-sm font-medium shadow transition-discrete duration-300;
+    @apply items-center justify-center rounded-md px-4 py-2 text-sm shadow transition-discrete duration-300;
 }
 
 .btn {

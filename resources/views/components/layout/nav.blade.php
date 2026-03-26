@@ -11,7 +11,7 @@
         </li>
     @else
         <li>
-            <a href="/login" class="btn">{{ __('nav.login') }}</a>
+            <a href="/login" class="btn-inline">{{ __('nav.login') }}</a>
         </li>
     @endauth
         <li class="relative w-12 h-6 flex gap-1 items-center cursor-pointer">
@@ -26,11 +26,11 @@
                 </li>
                 <li class="hidden dropdown-item">
                     @if (app()->getLocale() !== 'en')
-                        <a href="/language/en" aria-label="{{ __('nav.switch_language') }} {{ __('nav.english') }}">
+                        <a href="/language/en" class="w-full h-full" aria-label="{{ __('nav.switch_language') }} {{ __('nav.english') }}">
                             <x-svg.en class="w-4 bg-card rounded-xs shadow ring ring-border"/>
                         </a>
                     @else
-                        <a href="/language/nl" aria-label="{{ __('nav.switch_language') }} {{ __('nav.dutch') }}">
+                        <a href="/language/nl" class="w-full h-full" aria-label="{{ __('nav.switch_language') }} {{ __('nav.dutch') }}">
                             <x-svg.nl class="w-4 bg-card rounded-xs shadow ring ring-border"/>
                         </a>
                     @endif
