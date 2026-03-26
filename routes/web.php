@@ -10,4 +10,7 @@ Route::get('/language/{locale}', [LanguageController::class, 'switch']);
 Route::get('/', [MovieController::class, 'index']);
 Route::get('/movies/{tmdb_id}', [MovieController::class, 'show']);
 Route::get('/register', [RegistrationController::class, 'create']);
+Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy']);

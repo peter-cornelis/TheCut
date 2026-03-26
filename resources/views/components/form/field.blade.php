@@ -1,14 +1,14 @@
-@props(['id','label','type'])
+@props(['id','label','type','autocomplete' => null])
 <div class="form-field">
     <label for="{{ $id }}" class="label">
         {{ $label }}
-        <span>
+        <span class="">
             @error($id)
-                {{ $message }}
+                 - {{ $message }}
             @else
                 &ast;
             @enderror
         </span>
     </label>
-    <input type="{{ $type }}" id="{{ $id }}" class="input">
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}" class="input" autocomplete="{{ $autocomplete }}">
 </div>

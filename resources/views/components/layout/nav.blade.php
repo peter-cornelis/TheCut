@@ -7,7 +7,10 @@
     <ul class="relative flex items-center gap-4">
     @auth
         <li>
-            <a href="/logout" class="btn-inline">{{ __('nav.logout') }}</a>
+            <button type="submit" class="btn-inline" form="logout-form">{{ __('nav.logout') }}</button>
+            <form id="logout-form" action="/logout" method="post" class="hidden">
+                @csrf
+            </form>
         </li>
     @else
         <li>
