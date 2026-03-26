@@ -11,6 +11,9 @@
         </li>
     @else
         <li>
+            <a href="/register" class="btn-inline">{{ __('nav.register') }}</a>
+        </li>
+        <li>
             <a href="/login" class="btn-inline">{{ __('nav.login') }}</a>
         </li>
     @endauth
