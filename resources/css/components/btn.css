@@ -12,5 +12,5 @@
 }
 
 .btn-circle {
-    @apply rounded-full aspect-square h-full p-2 flex items-center text-sm ring-2 ring-border hover:ring-primary transition-discrete duration-300;
+    @apply rounded-full aspect-square h-full p-1 flex items-center justify-center bg-foreground text-background shadow-md shadow-black/30 hover:shadow-black/50 hover:scale-105 transition-discrete duration-300;
 }

@@ -15,7 +15,7 @@
         <main class="max-w-7xl mx-auto px-6 py-10">
             {{ $slot }}
         </main>
-        <footer class="px-4 border-t border-border text-center py-4 text-sm text-muted-foreground font-medium">
+        <footer class="px-4 py-2 text-center text-sm text-muted-foreground font-medium">
             &copy; {{ date('Y') }} | Peter Cornelis | {{ __('pages.meta_provided') }}
             <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
                 <img src="/images/tmdb_logo.svg" alt="TMDB Logo" class="ml-1 inline h-4">

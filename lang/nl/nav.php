@@ -7,8 +7,8 @@
 return [
     'home' => 'Home',
     'list' => 'Mijn Lijst',
-    'login' => 'Inloggen',
-    'logout' => 'Uitloggen',
+    'login' => 'Aanmelden',
+    'logout' => 'Afmelden',
     'register' => 'Registreren',
     'current_language' => 'De huidige taal is',
     'switch_language' => 'Schakel taal naar',
