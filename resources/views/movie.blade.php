@@ -5,22 +5,22 @@
             <div class="grid grid-cols-[auto_1fr] w-full h-full bg-black/70 rounded-md">
                 <div class="relative">
                     <img class="h-64 object-cover rounded-l-md shadow-lg shadow-black/50" src="{{ $movie->poster_url }}" alt="{{ $movie->title }} poster">
-                    <div id="movie-action">
-                        @auth
-                            <form id="remove-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/remove" method="post">
-                                @csrf
-                                <button type="submit" onclick="toggleMovie(event, {{ $movie->id }}, 'remove')" class="btn-circle h-9 bg-rose-400">
-                                    <x-svg.remove class="w-6 h-6" />
-                                </button>
-                            </form>
-                            <form id="add-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/add" method="post">
-                                @csrf
-                                <button type="submit" onclick="toggleMovie(event, {{ $movie->id }}, 'add')" class="btn-circle h-9 bg-emerald-400">
-                                    <x-svg.add class="w-6 h-6" />
-                                </button>
-                            </form>
-                        @endauth
+                    @auth
+                    <div id="movie-action" data-in-list="{{ auth()->user()->movies->contains($movie->id) ? 'true' : 'false' }}">
+                        <form id="remove-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/remove" method="post">
+                            @csrf
+                            <button type="submit" onclick="MovieListHandler.toggle(event, {{ $movie->id }}, 'remove')" class="btn-circle h-9 bg-rose-400">
+                                <x-svg.remove class="w-6 h-6" />
+                            </button>
+                        </form>
+                        <form id="add-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/add" method="post">
+                            @csrf
+                            <button type="submit" onclick="MovieListHandler.toggle(event, {{ $movie->id }}, 'add')" class="btn-circle h-9 bg-emerald-400">
+                                <x-svg.add class="w-6 h-6" />
+                            </button>
+                        </form>
                     </div>
+                    @endauth
                 </div>
                 <div class="grid grid-rows-[auto_1fr_auto] py-4 px-6 h-full">
                     <h1 class="text-left font-bold mb-4">{{ $movie->title }}</h1>
@@ -40,39 +40,5 @@
         </header>
         <p>{{ $movie->overview }}</p>
     </section>
-    <script>
-        async function toggleMovie(event, id, action) {
-            event.preventDefault();
-            const response = await fetch(`/movies/${id}/${action}`, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: new FormData(document.getElementById(`${action}-movie-form`)),
-            });
-            const result = await response.json();
-            if (!response.ok) {
-                console.log('An error occurred while adding the movie!');
-                return;
-            }
-            if (!result.success) {
-                showFlashMessage(result.error, 'error');
-            } else {
-                showFlashMessage(result.message, 'success');
-            }
-            _inMovieList(action === 'add');
-        }
 
-        function _inMovieList(isInList) {
-            if( isInList ) {
-                document.getElementById('add-movie-form').classList.add('hidden');
-                document.getElementById('remove-movie-form').classList.remove('hidden');
-            } else {
-                document.getElementById('add-movie-form').classList.remove('hidden');
-                document.getElementById('remove-movie-form').classList.add('hidden');
-            }
-        }
-
-        @auth
-            _inMovieList(@json(auth()->user()->movies->contains($movie->id)));
-        @endauth
-    </script>
 </x-layout>

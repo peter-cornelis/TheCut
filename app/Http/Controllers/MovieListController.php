@@ -28,7 +28,7 @@ class MovieListController extends Controller
 
     public function remove(int $movie_id): JsonResponse
     {
-        if (!Auth::user()->movies->contains($movie_id)) {
+        if (! Auth::user()->movies->contains($movie_id)) {
             return response()->json([
                 'success' => false,
                 'error' => __('flash.movie_not_in_list'),

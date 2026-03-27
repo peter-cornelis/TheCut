@@ -23,18 +23,4 @@
             </a>
         </footer>
     </body>
-    <script>
-        function showFlashMessage(message, type) {
-            const flashMessage = document.getElementById('flash-message');
-            const color = type === 'success' ? 'bg-emerald-700' : 'bg-rose-700';
-            flashMessage.classList.add(color);
-            flashMessage.classList.remove('opacity-0');
-            flashMessage.textContent = message;
-            setTimeout(() => {
-                flashMessage.textContent = '';
-                flashMessage.classList.remove(color);
-                flashMessage.classList.add('opacity-0');
-            }, 4000);
-        }
-    </script>
 </html>
