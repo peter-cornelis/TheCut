@@ -41,12 +41,6 @@
         <p>{{ $movie->overview }}</p>
     </section>
     <script>
-        if (@json(auth()->check())) {
-            let isInList = @json(auth()->user()?->movies->contains($movie->id));
-
-            _inMovieList(isInList);
-        }
-
         async function toggleMovie(event, id, action) {
             event.preventDefault();
             const response = await fetch(`/movies/${id}/${action}`, {
@@ -60,13 +54,11 @@
                 return;
             }
             if (!result.success) {
-                console.log(result.error);
-                isInList = action === 'add';
+                showFlashMessage(result.error, 'error');
             } else {
-                console.log(result.message);
-                isInList = action === 'add';
+                showFlashMessage(result.message, 'success');
             }
-            _inMovieList(isInList);
+            _inMovieList(action === 'add');
         }
 
         function _inMovieList(isInList) {
@@ -78,5 +70,9 @@
                 document.getElementById('remove-movie-form').classList.add('hidden');
             }
         }
+
+        @auth
+            _inMovieList(@json(auth()->user()->movies->contains($movie->id)));
+        @endauth
     </script>
 </x-layout>

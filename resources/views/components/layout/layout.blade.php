@@ -11,6 +11,7 @@
     <body class="h-screen grid grid-rows-[auto_1fr_auto] bg-background text-foreground">
         <header class="sticky top-0 z-100 bg-card border-b border-border shadow-md shadow-black/50">
             <x-layout.nav />
+            <span id="flash-message" class="absolute top-20 left-1/2 -translate-x-1/2 text-sm px-4 py-1 rounded shadow"></span>
         </header>
         <main class="w-full max-w-7xl mx-auto px-6 py-10">
             {{ $slot }}
@@ -22,4 +23,18 @@
             </a>
         </footer>
     </body>
+    <script>
+        function showFlashMessage(message, type) {
+            const flashMessage = document.getElementById('flash-message');
+            const color = type === 'success' ? 'bg-emerald-700' : 'bg-rose-700';
+            flashMessage.classList.add(color);
+            flashMessage.classList.remove('opacity-0');
+            flashMessage.textContent = message;
+            setTimeout(() => {
+                flashMessage.textContent = '';
+                flashMessage.classList.remove(color);
+                flashMessage.classList.add('opacity-0');
+            }, 4000);
+        }
+    </script>
 </html>
