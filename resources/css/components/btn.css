@@ -1,6 +1,12 @@
 .btn,
+.btn-inline,
+.btn-circle {
+    @apply flex items-center justify-center cursor-pointer transition-discrete duration-300;
+}
+
+.btn,
 .btn-inline {
-    @apply flex items-center justify-center font-normal rounded-md px-4 py-2 text-sm shadow transition-discrete duration-300;
+    @apply font-normal rounded-md px-4 py-2 text-sm shadow;
 }
 
 .btn {
@@ -12,5 +18,5 @@
 }
 
 .btn-circle {
-    @apply rounded-full aspect-square h-full p-1 flex items-center justify-center bg-foreground text-background shadow-md shadow-black/30 hover:shadow-black/50 hover:scale-105 transition-discrete duration-300;
+    @apply rounded-full aspect-square h-full p-1 bg-foreground text-background shadow-md shadow-black/30 hover:shadow-black/50 hover:scale-105;
 }

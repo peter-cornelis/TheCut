@@ -5,7 +5,7 @@
 */
 
 return [
-    'upcomingTitle' => 'Opkomende Films',
+    'upcoming_title' => 'Opkomende Films',
     'released' => 'Uitgebracht: ',
     'expected' => 'Verwacht: ',
     'trailer' => 'Bekijk trailer',

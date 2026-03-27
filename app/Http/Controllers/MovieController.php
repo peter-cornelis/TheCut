@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
 use App\Models\Movie;
 use App\Services\TmdbService;
 
@@ -17,22 +15,6 @@ class MovieController extends Controller
     public function index(TmdbService $tmdb)
     {
         return view('home', ['movies' => $tmdb->getUpcomingMovies()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): void
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMovieRequest $request): void
-    {
-        //
     }
 
     /**
@@ -50,29 +32,5 @@ class MovieController extends Controller
         }
 
         return view('movie', ['movie' => $movie]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Movie $movie): void
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMovieRequest $request, Movie $movie): void
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Movie $movie): void
-    {
-        //
     }
 }
