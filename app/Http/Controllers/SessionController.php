@@ -23,9 +23,7 @@ class SessionController extends Controller
             return redirect('/');
         }
 
-        return back()->withErrors([
-            'email' => __('auth.failed'),
-        ]);
+        return back();
     }
 
     public function destroy()
@@ -36,5 +34,14 @@ class SessionController extends Controller
         request()->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function generateApiKey()
+    {
+        $user = Auth::user();
+        $token = $user->createToken('my-list')->plainTextToken;
+
+
+        return response()->json(['message' => __('flash.api_key_generated'), 'token' => $token]);
     }
 }

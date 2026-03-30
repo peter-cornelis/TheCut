@@ -14,5 +14,5 @@ return [
     'email_exists' => 'Dit e-mailadres is nog niet geregistreerd.',
     'password_required' => 'Wachtwoord is verplicht.',
     'password_confirmed' => 'Wachtwoord bevestiging komt niet overeen.',
-    'password_min' => 'Wachtwoord moet minimaal :min tekens bevatten.',
+    'password_min' => 'Wachtwoord moet minimaal :min tekens bevatten.'
 ];

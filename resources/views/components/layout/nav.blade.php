@@ -16,18 +16,15 @@
                 <x-svg.user class="w-6 h-6" />
             </button>
             <ul id="user-settings" class="hidden absolute top-10 -left-30 gap-2 min-w-40 bg-background text-foreground rounded-md shadow-lg shadow-black/50 p-2 border border-border">
-                <h2 class="opacity-60 text-center border-b border-border pb-1">API Management</h2>
+                <h2 class="opacity-60 text-center border-b border-border pb-1">{{ __('nav.api_management') }}</h2>
                 <li>
-                    <button type="submit" class="btn w-full bg-emerald-400 hover:bg-emerald-500">
+                    <button type="submit" onclick="UserMenuHandler.generateApiKey(event)" class="btn w-full bg-emerald-400 hover:bg-emerald-500" form="generate-token-form">
                         <x-svg.token class="w-4 h-4 mr-1" />
                         New
                     </button>
-                </li>
-                <li>
-                    <button type="submit" class="btn w-full bg-indigo-400 hover:bg-indigo-500">
-                        <x-svg.copy class="w-4 h-4 mr-1" />
-                        Copy
-                    </button>
+                    <form id="generate-token-form" action="/api-keys" method="post" class="hidden">
+                        @csrf
+                    </form>
                 </li>
                 <li class="border-t border-border pt-2">
                     <button type="submit" class="btn-inline w-full" form="logout-form">{{ __('nav.logout') }}</button>
