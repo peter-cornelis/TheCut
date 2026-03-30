@@ -9,13 +9,33 @@
             </li>
         @endauth
     </ul>
-    <ul class="relative flex items-center gap-4">
+    <ul class="flex items-center gap-4">
     @auth
-        <li>
-            <button type="submit" class="btn-inline" form="logout-form">{{ __('nav.logout') }}</button>
-            <form id="logout-form" action="/logout" method="post" class="hidden">
-                @csrf
-            </form>
+        <li class="relative flex items-center justify-center">
+            <button type="button" id="user-menu-button" onclick="UserMenuHandler.toggleMenu()" class="btn-circle bg-border hover:bg-indigo-400 text-foreground transition-discrete duration-300">
+                <x-svg.user class="w-6 h-6" />
+            </button>
+            <ul id="user-settings" class="hidden absolute top-10 -left-30 gap-2 min-w-40 bg-background text-foreground rounded-md shadow-lg shadow-black/50 p-2 border border-border">
+                <h2 class="opacity-60 text-center border-b border-border pb-1">API Management</h2>
+                <li>
+                    <button type="submit" class="btn w-full bg-emerald-400 hover:bg-emerald-500">
+                        <x-svg.token class="w-4 h-4 mr-1" />
+                        New
+                    </button>
+                </li>
+                <li>
+                    <button type="submit" class="btn w-full bg-indigo-400 hover:bg-indigo-500">
+                        <x-svg.copy class="w-4 h-4 mr-1" />
+                        Copy
+                    </button>
+                </li>
+                <li class="border-t border-border pt-2">
+                    <button type="submit" class="btn-inline w-full" form="logout-form">{{ __('nav.logout') }}</button>
+                    <form id="logout-form" action="/logout" method="post" class="hidden">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
         </li>
     @else
         <li>

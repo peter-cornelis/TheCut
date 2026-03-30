@@ -14,7 +14,6 @@ class LanguageHandler {
 
     #close() {
         this.dropdown.classList.remove('active-dropdown');
-        this.dropdownItems.forEach(item => item.classList.add('hidden'));
     }
 
     #handleOutsideClick(event) {
