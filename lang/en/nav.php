@@ -6,7 +6,7 @@
 
 return [
     'home' => 'Home',
-    'list' => 'My List',
+    'list' => 'Favorites',
     'login' => 'Login',
     'logout' => 'Logout',
     'register' => 'Register',

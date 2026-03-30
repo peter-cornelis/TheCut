@@ -6,7 +6,7 @@
 
 return [
     'home' => 'Home',
-    'list' => 'Mijn Lijst',
+    'list' => 'Favorieten',
     'login' => 'Aanmelden',
     'logout' => 'Afmelden',
     'register' => 'Registreren',

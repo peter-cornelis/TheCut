@@ -6,14 +6,14 @@
                 <div class="relative">
                     <img class="h-64 object-cover rounded-l-md shadow-lg shadow-black/50" src="{{ $movie->poster_url }}" alt="{{ $movie->title }} poster">
                     @auth
-                    <div id="movie-action" data-in-list="{{ auth()->user()->movies->contains($movie->id) ? 'true' : 'false' }}">
-                        <form id="remove-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/remove" method="post">
+                    <div id="movie-action">
+                        <form id="remove-movie-form-{{ $movie->id }}" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2 {{ auth()->user()->movies->contains($movie->id) ? '' : 'hidden' }}" action="/movies/{{ $movie->id }}/remove" method="post">
                             @csrf
                             <button type="submit" onclick="MovieListHandler.toggle(event, {{ $movie->id }}, 'remove')" class="btn-circle h-9 bg-rose-400">
                                 <x-svg.remove class="w-6 h-6" />
                             </button>
                         </form>
-                        <form id="add-movie-form" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2" action="/movies/{{ $movie->id }}/add" method="post">
+                        <form id="add-movie-form-{{ $movie->id }}" class="action-form absolute bottom-2 left-1/2 -translate-x-1/2 {{ auth()->user()->movies->contains($movie->id) ? 'hidden' : '' }}" action="/movies/{{ $movie->id }}/add" method="post">
                             @csrf
                             <button type="submit" onclick="MovieListHandler.toggle(event, {{ $movie->id }}, 'add')" class="btn-circle h-9 bg-emerald-400">
                                 <x-svg.add class="w-6 h-6" />

@@ -9,6 +9,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MovieListController extends Controller
 {
+    public function index()
+    {
+        $movies = Auth::user()->movies()->get();
+
+        return view('movie-list', ['movies' => $movies]);
+    }
+
     public function add(int $movie_id): JsonResponse
     {
         if (Auth::user()->movies->contains($movie_id)) {

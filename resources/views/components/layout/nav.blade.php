@@ -3,6 +3,11 @@
         <li>
             <a href="/" class="text-3xl font-bold flex items-center" aria-label="{{ __('nav.home') }}">🎬 The Cut</a>
         </li>
+        @auth
+            <li>
+                <a href="/movie-list" class="text-sm font-medium text-foreground/50 hover:text-foreground transition-colors duration-300">{{ __('nav.list') }}</a>
+            </li>
+        @endauth
     </ul>
     <ul class="relative flex items-center gap-4">
     @auth

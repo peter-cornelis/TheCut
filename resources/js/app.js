@@ -2,8 +2,7 @@ import './bootstrap';
 import './LanguageHandler';
 import MovieListHandler from './MovieListHandler';
 
-const movieAction = document.getElementById('movie-action');
-if (movieAction) {
-    // Gobal scope MovieListHandler for use in inline onclick handlers
-    window.MovieListHandler = new MovieListHandler(movieAction.dataset.inList === 'true');
+if (document.getElementById('movie-action') || document.getElementById('movie-list')) {
+    // Global scope MovieListHandler for use in inline onclick handlers
+    window.MovieListHandler = new MovieListHandler();
 }
