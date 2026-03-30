@@ -13,7 +13,7 @@
         <button class="flex items-center justify-center col-start-2 border-t border-background">
             <x-svg.down class='w-6 h-6' />
         </button>
-        <button for="remove-movie-form-{{ $movie->id }}" type="submit" onclick="MovieListHandler.remove(event, {{ $movie->id }})" class="movie-action h-full row-span-2 col-start-1 row-start-1 px-2 hover:bg-rose-400 border-r border-background">
+        <button form="remove-movie-form-{{ $movie->id }}" type="submit" onclick="MovieListHandler.remove(event, {{ $movie->id }})" class="movie-action h-full row-span-2 col-start-1 row-start-1 px-2 hover:bg-rose-400 border-r border-background">
             <x-svg.remove class="w-6 h-6" />
         </button>
     </menu>

@@ -9,10 +9,10 @@ class MovieListHandler {
                 return;
             }
             new FlashMessage(result.message, 'success');
+            this.#toggleButton(action === 'add', id);
         } catch (error) {
             console.error(`An error occurred while ${action === 'add' ? 'adding' : 'removing'} the movie:`, error);
         }
-        this.#toggleButton(action === 'add', id);
     }
 
     async remove(event, id) {
@@ -37,7 +37,7 @@ class MovieListHandler {
         });
         const result = await response.json();
         if (!response.ok) {
-            console.log(`An error occurred while ${action === 'add' ? 'adding' : 'removing'} the movie!`);
+            console.error(`An error occurred while ${action === 'add' ? 'adding' : 'removing'} the movie!`);
             return;
         }
         return result;
