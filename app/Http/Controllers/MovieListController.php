@@ -25,6 +25,13 @@ class MovieListController extends Controller
             ]);
         }
 
+        if (Auth::user()->movies->count() >= 5) {
+            return response()->json([
+                'success' => false,
+                'error' => __('flash.movie_list_full'),
+            ]);
+        }
+
         Auth::user()->movies()->attach($movie_id);
 
         return response()->json([
