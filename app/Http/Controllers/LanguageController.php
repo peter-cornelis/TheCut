@@ -16,6 +16,6 @@ class LanguageController extends Controller
 
         Cookie::queue('language', $locale, 525600);
 
-        return redirect()->back();
+        return back();
     }
 }

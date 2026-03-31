@@ -1,6 +1,5 @@
 <x-layout title="Home">
-    <form action="/movies/search" method="post" class="flex rounded-full p-0 w-fit mx-auto mb-6 border-0">
-        @csrf
+    <form action="/movies/search" method="get" class="flex rounded-full p-0 w-fit mx-auto mb-6 border-0">
         <input type="text" id="search" name="search" placeholder="{{ __('pages.search_placeholder') }}" value="{{ $search ?? '' }}" class="input rounded-l-full border-r-0 px-5">
         <button type="submit" class="input font-bold bg-indigo-400 hover:bg-indigo-500 rounded-r-full mt-0 transition-colors duration-300">
             <x-svg.search class="w-6 h-6"/>

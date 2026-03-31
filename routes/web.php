@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/language/{locale}', [LanguageController::class, 'switch']);
 Route::get('/', [MovieController::class, 'index']);
+Route::get('/movies/search', [MovieController::class, 'search']);
 Route::get('/movies/{id}', [MovieController::class, 'show']);
-Route::post('/movies/search', [MovieController::class, 'search']);
 Route::get('/register', [RegistrationController::class, 'create']);
 Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create']);
