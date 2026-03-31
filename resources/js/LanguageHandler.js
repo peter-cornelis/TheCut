@@ -12,13 +12,9 @@ class LanguageHandler {
         this.dropdownItems.forEach(item => item.classList.toggle('hidden'));
     }
 
-    #close() {
-        this.dropdown.classList.remove('active-dropdown');
-    }
-
     #handleOutsideClick(event) {
         if (!this.dropdown.contains(event.target) && this.dropdown.classList.contains('active-dropdown')) {
-            this.#close();
+            this.#toggle();
         }
     }
 } export default new LanguageHandler();
