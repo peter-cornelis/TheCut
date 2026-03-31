@@ -33,6 +33,11 @@ class MovieController extends Controller
     public function search(TmdbService $tmdb)
     {
         $search = request()->input('search');
+
+        if (empty($search)) {
+            return redirect('/');
+        }
+
         $movies = $tmdb->searchMovies($search);
 
         return view('home', ['movies' => $movies, 'search' => $search]);
