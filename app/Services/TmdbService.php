@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Movie;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 class TmdbService
@@ -41,7 +42,7 @@ class TmdbService
         return $movie;
     }
 
-    public function searchMovies(string $query): array
+    public function searchMovies(string $query): Collection
     {
         $data = $this->client()
             ->get('/search/movie', [
@@ -51,16 +52,26 @@ class TmdbService
             ->throw()
             ->json();
 
-        return array_map(Movie::fromTmdb(...), $data['results']);
+        return collect($data['results'])
+            ->map(fn(array $result) => Movie::fromTmdb($result));
     }
 
-    public function getUpcomingMovies(): array
+    public function getUpcomingMovies(): Collection
     {
         $data = $this->client()
             ->get('/movie/upcoming', ['language' => app()->getLocale()])
             ->throw()
             ->json();
 
-        return array_map(Movie::fromTmdb(...), $data['results']);
+        return collect($data['results'])
+            ->map(fn(array $result) => Movie::fromTmdb($result));
+    }
+
+    public function reorderMovies(Collection $movies): void
+    {
+        foreach ($movies as $index => $movie) {
+            $movie->pivot->place = $index + 1;
+            $movie->pivot->save();
+        }
     }
 }

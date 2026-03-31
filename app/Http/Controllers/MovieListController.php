@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Services\TmdbService;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -40,7 +41,7 @@ class MovieListController extends Controller
         ]);
     }
 
-    public function remove(int $movie_id): JsonResponse
+    public function remove(int $movie_id, TmdbService $tmdb): JsonResponse
     {
         if (! Auth::user()->movies->contains($movie_id)) {
             return response()->json([
@@ -49,7 +50,9 @@ class MovieListController extends Controller
             ]);
         }
 
-        Auth::user()->movies()->detach($movie_id);
+        $movies = Auth::user()->movies();
+        $movies->detach($movie_id);
+        $tmdb->reorderMovies($movies->get());
 
         return response()->json([
             'success' => true,

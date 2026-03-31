@@ -15,9 +15,14 @@ Route::get('/register', [RegistrationController::class, 'create']);
 Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
-Route::post('/logout', [SessionController::class, 'destroy']);
-Route::post('/movies/{id}/add', [MovieListController::class, 'add']);
-Route::post('/movies/{id}/remove', [MovieListController::class, 'remove']);
-Route::get('/movies/{id}/move', [MovieListController::class, 'move']);
 Route::get('/movie-list', [MovieListController::class, 'index']);
-Route::post('/api-keys', [SessionController::class, 'generateApiKey']);
+
+// Routes that require authentication
+Route::middleware('auth')->group(function () {
+    Route::get('/movie-list', [MovieListController::class, 'index']);
+    Route::post('/movies/{id}/add', [MovieListController::class, 'add']);
+    Route::post('/movies/{id}/remove', [MovieListController::class, 'remove']);
+    Route::get('/movies/{id}/move', [MovieListController::class, 'move']);
+    Route::post('/api-keys', [SessionController::class, 'generateApiKey']);
+    Route::post('/logout', [SessionController::class, 'destroy']);
+});
