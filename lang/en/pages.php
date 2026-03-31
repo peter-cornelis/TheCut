@@ -10,4 +10,6 @@ return [
     'expected' => 'Expected: ',
     'trailer' => 'Watch trailer',
     'meta_provided' => 'Metadata provided by ',
+    'search_placeholder' => 'Search for movies...',
+    'search_title' => 'Search results',
 ];

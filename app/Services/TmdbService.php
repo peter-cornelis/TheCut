@@ -43,13 +43,15 @@ class TmdbService
 
     public function searchMovies(string $query): array
     {
-        return $this->client()
+        $data = $this->client()
             ->get('/search/movie', [
                 'query' => $query,
                 'language' => app()->getLocale(),
             ])
             ->throw()
             ->json();
+
+        return array_map(Movie::fromTmdb(...), $data['results']);
     }
 
     public function getUpcomingMovies(): array
