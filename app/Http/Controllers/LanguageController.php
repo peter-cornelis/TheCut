@@ -10,7 +10,7 @@ class LanguageController extends Controller
 {
     public function switch($locale)
     {
-        if (! in_array($locale, ['en', 'nl'])) {
+        if (! in_array($locale, config('app.locales'))) {
             abort(400);
         }
 

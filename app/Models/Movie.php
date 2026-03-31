@@ -29,10 +29,11 @@ class Movie extends Model
         return $this->belongsToMany(User::class, 'movielists')->withPivot('place');
     }
 
-    public static function fromTmdb(array $data): self
+    public static function fromTmdb(array $data, $locale = null): self
     {
-        $locale = app()->getLocale();
-
+        if (!$locale) {
+            $locale = app()->getlocale();
+        }
         return new self([
             'id' => $data['id'],
             "title_{$locale}" => $data['title'],
