@@ -14,5 +14,6 @@ return [
     'switch_language' => 'Schakel taal naar',
     'english' => 'English',
     'dutch' => 'Nederlands',
+    'new' => 'Nieuw',
     'api_management' => 'API Beheer',
 ];

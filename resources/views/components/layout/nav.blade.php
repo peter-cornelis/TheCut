@@ -5,14 +5,14 @@
         </li>
         @auth
             <li>
-                <a href="/movie-list" class="text-sm font-medium text-foreground/50 hover:text-foreground transition-colors duration-300">{{ __('nav.list') }}</a>
+                <a href="/movie-list" class="text-sm border border-border px-4 py-2 text-foreground/70 hover:text-foreground hover:bg-border rounded shadow shadow-black/50 transition-colors duration-500">{{ __('nav.list') }}</a>
             </li>
         @endauth
     </ul>
     <ul class="flex items-center gap-4">
     @auth
         <li class="relative flex items-center justify-center">
-            <button type="button" id="user-menu-button" onclick="UserMenuHandler.toggleMenu()" class="btn-circle bg-border hover:bg-indigo-400 text-foreground transition-discrete duration-300">
+            <button type="button" id="user-menu-button" onclick="UserMenuHandler.toggleMenu()" class="btn-circle text-foreground/70 hover:text-foreground bg-card hover:bg-border ring ring-border hover:scale-100 transition-discrete duration-300">
                 <x-svg.user class="w-6 h-6" />
             </button>
             <ul id="user-settings" class="hidden absolute top-10 -left-30 gap-2 min-w-40 bg-background text-foreground rounded-md shadow-lg shadow-black/50 p-2 border border-border">
@@ -20,7 +20,7 @@
                 <li>
                     <button type="submit" onclick="UserMenuHandler.generateApiKey(event)" class="btn w-full bg-emerald-400 hover:bg-emerald-500" form="generate-token-form">
                         <x-svg.token class="w-4 h-4 mr-1" />
-                        New
+                        {{ __('nav.new') }}
                     </button>
                     <form id="generate-token-form" action="/api-keys" method="post" class="hidden">
                         @csrf

@@ -28,6 +28,23 @@ class MovieListHandler {
         }
     }
 
+    async move(event, id, direction) {
+        event.preventDefault();
+        const response = await fetch(`/movies/${id}/move?direction=${direction}`, {
+            method: 'GET',
+        });
+        const result = await response.json();
+        if (!response.ok) {
+            console.error(`An error occurred while moving the movie ${direction}!`);
+            return;
+        }
+        if (!result.success) {
+            new FlashMessage(result.error, 'error');
+            return;
+        }
+        window.location.reload();
+    }
+
     async #post(event, id, action) {
         event.preventDefault();
         const response = await fetch(`/movies/${id}/${action}`, {

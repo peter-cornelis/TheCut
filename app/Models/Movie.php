@@ -26,7 +26,7 @@ class Movie extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'movielists');
+        return $this->belongsToMany(User::class, 'movielists')->withPivot('place');
     }
 
     public static function fromTmdb(array $data): self
@@ -60,12 +60,12 @@ class Movie extends Model
 
     public function getPosterUrlAttribute(): string
     {
-        return config('tmdb.poster_base_url').$this->poster_path;
+        return config('tmdb.poster_base_url') . $this->poster_path;
     }
 
     public function getBackdropUrlAttribute(): string
     {
-        return config('tmdb.backdrop_base_url').$this->backdrop_path;
+        return config('tmdb.backdrop_base_url') . $this->backdrop_path;
     }
 
     public function getReleaseYearAttribute(): string
@@ -90,5 +90,12 @@ class Movie extends Model
         $locale = app()->getLocale();
 
         return $this->{"overview_{$locale}"};
+    }
+
+    public function getPlaceAttribute(): ?int
+    {
+        $pivot = $this->pivot;
+
+        return $pivot ? $pivot->place : null;
     }
 }

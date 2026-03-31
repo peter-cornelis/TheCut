@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('movielists', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('place');
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Movie::class)->constrained()->cascadeOnDelete();
 
